@@ -1,12 +1,8 @@
 const mongoose = require('mongoose');
-const express = require('express');
-const app = express();
-const url = 'mongodb://admin:testadmin1@ds155730.mlab.com:55730/nodeappdatabase';
 const Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise;
-mongoose.connect(url);
-
+mongoose.connect('mongodb://admin:testadmin1@ds155730.mlab.com:55730/nodeappdatabase');
 
 const userSchema = new Schema({
     name: String,
@@ -68,21 +64,6 @@ const mark = new User({
 mark.manify(function (err, name) {
     if (err) throw err;
     console.log('Twoje nowe imię to: ' + name);
-});
-
-app.route('/users').get(function(req, res)
-
-{
-    mongoose.connect(url, function(err, db) {
-       const cursor = db.collection('Users').find();
-        cursor.each(function(err, item) {
-
-            if (item != null) {
-                str = str + item.name </br>";
-            }
-        });
-        res.send(str);
-    });
 });
 
 const findAllUsers = function () {
@@ -158,5 +139,3 @@ Promise.all([kenny.save(), mark.save(), benny.save()])
     .then(findKennyAndDelete)
     .then(findBennyAndRemove)
     .catch(console.log.bind(console));
-
-const server = app.listen(3000, function() {});
