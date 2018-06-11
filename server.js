@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://mongodb://admin:testadmin1@ds155730.mlab.com:55730/nodeappdatabase');
+mongoose.connect('mongodb://admin:testadmin1@ds155730.mlab.com:55730/nodeappdatabase');
 
 const userSchema = new Schema({
     name: String,
@@ -85,7 +85,7 @@ const updadeUserPassword = function () {
         .then(function (user) {
             console.log('Old password is ' + user.password);
             console.log('Name ' + user.name);
-            user.password = 'newPassword';
+            user.password = 'haslo';
             console.log('New password is ' + user.password);
             return user.save(function (err) {
                 if (err) throw err;
